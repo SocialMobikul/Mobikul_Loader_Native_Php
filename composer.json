@@ -1,6 +1,6 @@
 {
   "name": "mobikul/mobikul_loader",
-  "description": "NativePHP Mobile loader plugin for PHP mobile applications",
+  "description": "Loader state bridge for NativePHP Mobile with optional Blade and web view helpers",
   "type": "nativephp-plugin",
   "license": "MIT",
   "keywords": [

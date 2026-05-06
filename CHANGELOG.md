@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-05-06
+
+### Changed
+- Refined the package description for clearer marketplace positioning.
+- Rewrote the README to use a cleaner NativePHP plugin documentation structure.
+- Clarified that the current implementation exposes loader state bridge methods and optional web view helpers.
+
 ## [1.0.0] - 2026-05-06
 
 ### Added
