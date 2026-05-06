@@ -224,4 +224,4 @@ This plugin follows semantic versioning.
 
 Loader UI example inside a NativePHP Mobile login screen:
 
-![Mobikul Loader Preview](docs/preview-login-loader.png)
+<img src="docs/preview-login-loader.png" alt="Mobikul Loader Preview" width="320" />
