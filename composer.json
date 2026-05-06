@@ -1,0 +1,37 @@
+{
+  "name": "mobikul/mobikul_loader",
+  "description": "NativePHP Mobile loader plugin for PHP mobile applications",
+  "type": "nativephp-plugin",
+  "license": "MIT",
+  "keywords": [
+    "nativephp",
+    "nativephp-plugin",
+    "mobile",
+    "loader"
+  ],
+  "support": {
+    "issues": "https://github.com/mobikul/mobikul_loader/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "MobikulLoader\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "illuminate/support": "^10.0|^11.0|^12.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MobikulLoader\\MobikulLoaderServiceProvider"
+      ],
+      "aliases": {
+        "MobikulLoader": "MobikulLoader\\Facades\\MobikulLoader"
+      }
+    },
+    "nativephp": {
+      "manifest": "nativephp.json"
+    }
+  }
+}

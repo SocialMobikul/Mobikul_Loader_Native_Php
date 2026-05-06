@@ -1,0 +1,44 @@
+.mobikul-loader-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+}
+
+.mobikul-loader-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+}
+
+.mobikul-loader-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #e6e6e6;
+  border-top-color: #1b74ff;
+  border-radius: 50%;
+  animation: mobikul-spin 0.9s linear infinite;
+}
+
+.mobikul-loader-message {
+  margin: 0;
+  color: #1f2937;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@keyframes mobikul-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

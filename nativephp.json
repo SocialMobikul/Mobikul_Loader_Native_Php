@@ -1,0 +1,15 @@
+{
+  "namespace": "MobikulLoader",
+  "bridge_functions": [
+    {
+      "name": "MobikulLoader.Show",
+      "ios": "MobikulLoaderFunctions.Show",
+      "android": "com.mobikul.plugins.loader.MobikulLoaderFunctions.Show"
+    },
+    {
+      "name": "MobikulLoader.Hide",
+      "ios": "MobikulLoaderFunctions.Hide",
+      "android": "com.mobikul.plugins.loader.MobikulLoaderFunctions.Hide"
+    }
+  ]
+}
