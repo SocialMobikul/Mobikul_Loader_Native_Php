@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Added explicit requirements, asset publishing, quick-start, and JS helper usage guidance.
 - Added package asset publishing support for Blade and web view helper files.
 - Added an explicit `nativephp/mobile` `^3.0` dependency and aligned the documented PHP requirement to `^8.2`.
+- Added `android.min_version` and `ios.min_version` to `nativephp.json` for NativePHP review compliance.
 
 ## [1.0.0] - 2026-05-06
 

@@ -1,5 +1,11 @@
 {
   "namespace": "MobikulLoader",
+  "android": {
+    "min_version": 29
+  },
+  "ios": {
+    "min_version": "18.0"
+  },
   "bridge_functions": [
     {
       "name": "MobikulLoader.Show",
