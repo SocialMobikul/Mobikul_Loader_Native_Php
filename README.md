@@ -1,21 +1,47 @@
 # Mobikul Loader for NativePHP Mobile
 
-Loader state bridge for NativePHP Mobile with optional Blade and web view helpers.
+Show and hide loader state in NativePHP Mobile apps, with optional Blade and web view support.
+
+To find out more, visit: https://mobikul.com/
 
 ## What this plugin does
 
-`mobikul_loader` provides a simple bridge for showing and hiding loader state inside a NativePHP Mobile app. It exposes two bridge methods, `MobikulLoader.Show` and `MobikulLoader.Hide`, so your app can trigger loading UI consistently from JavaScript or PHP-driven web views.
+`mobikul_loader` provides two NativePHP bridge methods:
+
+- `MobikulLoader.Show`
+- `MobikulLoader.Hide`
+
+These methods return loader state that your app can use while processing actions such as login, sync, or API requests.
 
 The package also includes an optional HTML, CSS, and JavaScript helper for Blade-based screens or hybrid web views where you want a ready-made overlay spinner.
 
+## Requirements
+
+- PHP `8.1` or higher
+- Laravel support package compatibility: `^10.0`, `^11.0`, or `^12.0`
+- A NativePHP Mobile application
+
 ## Installation
+
+Install the package:
 
 ```bash
 composer require mobikul/mobikul_loader
+```
+
+Register the plugin with NativePHP:
+
+```bash
 php artisan native:plugin:register mobikul/mobikul_loader
 ```
 
-If you install the plugin from the NativePHP marketplace, configure the NativePHP Composer repository and your marketplace credentials first:
+If this is your first time installing the plugin, or if you later change native bridge files, rebuild the native layer:
+
+```bash
+php artisan native:install --force
+```
+
+If you install from the NativePHP marketplace, configure the NativePHP Composer repository and credentials first:
 
 ```bash
 composer config repositories.nativephp-plugins composer https://plugins.nativephp.com
@@ -24,9 +50,53 @@ composer require mobikul/mobikul_loader
 php artisan native:plugin:register mobikul/mobikul_loader
 ```
 
-## Usage
+## Optional Asset Publishing
 
-Trigger loader state from your NativePHP app by calling the bridge endpoint:
+If you want to use the included Blade or web view loader UI, publish the package assets:
+
+```bash
+php artisan vendor:publish --tag=mobikul-loader-assets
+```
+
+This publishes the loader files to:
+
+```text
+public/vendor/mobikul_loader/
+```
+
+## Quick Start
+
+Example login flow using the bridge methods from a NativePHP web view:
+
+```js
+async function signIn() {
+  await fetch('/_native/api/call', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      method: 'MobikulLoader.Show',
+      params: { message: 'Signing you in...' }
+    })
+  });
+
+  try {
+    await fakeLoginRequest();
+  } finally {
+    await fetch('/_native/api/call', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        method: 'MobikulLoader.Hide',
+        params: {}
+      })
+    });
+  }
+}
+```
+
+## JavaScript Usage
+
+You can call the bridge endpoint directly:
 
 ```js
 await fetch('/_native/api/call', {
@@ -37,16 +107,18 @@ await fetch('/_native/api/call', {
     params: { message: 'Loading...' }
   })
 });
-
-await fetch('/_native/api/call', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    method: 'MobikulLoader.Hide',
-    params: {}
-  })
-});
 ```
+
+Or use the included helper module from [mobikulLoader.js](/Users/aman/Documents/Native/plugins/mobikul_loader/resources/js/mobikulLoader.js):
+
+```js
+import { show, hide } from './vendor/mobikul_loader/js/mobikulLoader.js';
+
+await show({ message: 'Loading...' });
+await hide();
+```
+
+The helper is intended for bundled frontend code in your app. The import path above is an example and may need to be adjusted to match your app's frontend build setup. If you are not using a bundler, call the bridge endpoint directly.
 
 ## Bridge Methods
 
@@ -81,7 +153,7 @@ Returns:
 
 ## Blade and Web View Helper
 
-If your NativePHP app renders Blade or hybrid web views, you can use the included helper to render a loader overlay:
+If your NativePHP app renders Blade or hybrid web views, you can use the included helper to render a loader overlay after publishing assets:
 
 ```php
 <?php
@@ -91,11 +163,11 @@ use MobikulLoader\HtmlLoader;
 $loader = new HtmlLoader('mobikul-native-loader', 'Please wait...');
 ?>
 
-<link rel="stylesheet" href="/vendor/mobikul/mobikul_loader/assets/css/loader.css">
+<link rel="stylesheet" href="/vendor/mobikul_loader/css/loader.css">
 
 <?= $loader->render(); ?>
 
-<script src="/vendor/mobikul/mobikul_loader/assets/js/loader.js"></script>
+<script src="/vendor/mobikul_loader/js/loader.js"></script>
 <script>
   window.MobikulNativeLoader.show('mobikul-native-loader');
 
@@ -107,7 +179,7 @@ $loader = new HtmlLoader('mobikul-native-loader', 'Please wait...');
 
 ## Important Behavior
 
-This plugin currently provides loader state bridge responses and optional web-based loader UI helpers. The included native bridge implementations return a success payload that your app can use to coordinate loading behavior on Android and iOS.
+This plugin currently provides loader state bridge responses and optional web-based loader UI helpers. The native bridge implementations return a success payload that your app can use to coordinate loading behavior on Android and iOS.
 
 If your app needs a fully rendered platform-native overlay component, extend the native bridge implementations in:
 
@@ -147,3 +219,9 @@ This plugin follows semantic versioning.
 - `MAJOR` for breaking API or manifest changes
 - `MINOR` for backward-compatible features
 - `PATCH` for fixes and documentation updates
+
+## Preview
+
+Loader UI example inside a NativePHP Mobile login screen:
+
+![Mobikul Loader Preview](docs/preview-login-loader.png)

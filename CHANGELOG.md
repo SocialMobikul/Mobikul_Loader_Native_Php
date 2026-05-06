@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 - Refined the package description for clearer marketplace positioning.
 - Rewrote the README to use a cleaner NativePHP plugin documentation structure.
 - Clarified that the current implementation exposes loader state bridge methods and optional web view helpers.
+- Added explicit requirements, asset publishing, quick-start, and JS helper usage guidance.
+- Added package asset publishing support for Blade and web view helper files.
 
 ## [1.0.0] - 2026-05-06
 
