@@ -10,7 +10,7 @@
     "loader"
   ],
   "support": {
-    "issues": "https://github.com/mobikul/mobikul_loader/issues"
+    "issues": "https://github.com/SocialMobikul/Mobikul_Loader_Native_Php/issues"
   },
   "autoload": {
     "psr-4": {
