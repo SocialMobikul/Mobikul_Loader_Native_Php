@@ -13,3 +13,6 @@ All notable changes to this project will be documented in this file.
 - Added Android and iOS bridge function stubs.
 - Kept HTML/CSS/JS loader helper for web/blade fallback usage.
 - Added plugin usage documentation for local demo app testing.
+
+### Changed
+- Updated repository commit identity configuration to `SocialMobikul <social.mobikul@webkul.com>` for future releases.
