@@ -1,10 +1,11 @@
 package com.mobikul.plugins.loader
 
+import androidx.fragment.app.FragmentActivity
 import com.nativephp.mobile.bridge.BridgeFunction
 import com.nativephp.mobile.bridge.BridgeResponse
 
 object MobikulLoaderFunctions {
-    class Show : BridgeFunction {
+    class Show(private val activity: FragmentActivity) : BridgeFunction {
         override fun execute(parameters: Map<String, Any>): Map<String, Any> {
             return BridgeResponse.success(
                 mapOf(
@@ -15,7 +16,7 @@ object MobikulLoaderFunctions {
         }
     }
 
-    class Hide : BridgeFunction {
+    class Hide(private val activity: FragmentActivity) : BridgeFunction {
         override fun execute(parameters: Map<String, Any>): Map<String, Any> {
             return BridgeResponse.success(mapOf("visible" to false))
         }
