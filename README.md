@@ -178,7 +178,7 @@ $loader = new HtmlLoader('mobikul-native-loader', 'Please wait...');
 </script>
 ```
 
-## Important Behavior
+## Important Behavior 
 
 This plugin currently provides loader state bridge responses and optional web-based loader UI helpers. The native bridge implementations return a success payload that your app can use to coordinate loading behavior on Android and iOS.
 
