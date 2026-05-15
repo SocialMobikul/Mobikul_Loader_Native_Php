@@ -18,7 +18,7 @@ The package also includes an optional HTML, CSS, and JavaScript helper for Blade
 ## Requirements
 
 - PHP `8.2` or higher
-- Laravel support package compatibility: `^10.0`, `^11.0`, or `^12.0`
+- Laravel support package compatibility: `^10.0`, `^11.0`, `^12.0`, or `^13`
 - `nativephp/mobile` `^3.0`
 - A NativePHP Mobile application
 

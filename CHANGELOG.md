@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-05-15
+
+### Changed
+- Added marketplace readiness updates for package listing and submission clarity.
+- Aligned documentation with Composer constraints, including Laravel support package compatibility through `^13`.
+
 ## [1.0.1] - 2026-05-06
 
 ### Changed
